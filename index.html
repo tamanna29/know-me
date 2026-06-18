@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamanna Sharma · AI Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16201c;
+    --paper:#f6f4ee;
+    --paper-2:#efece3;
+    --moss:#3f6b54;
+    --moss-deep:#2c4d3c;
+    --clay:#c4673b;
+    --line:#d8d3c6;
+    --muted:#6a7269;
+    --display:"Fraunces",Georgia,serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(246,244,238,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.04em;font-weight:500}
+  .brand b{color:var(--moss)}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{font-size:13px;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  @media(max-width:680px){.nav-links{display:none}}
+
+  /* hero */
+  header{padding:96px 0 76px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin-bottom:24px}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,7vw,76px);line-height:1.02;letter-spacing:-.02em;max-width:15ch;margin-bottom:28px}
+  h1 em{font-style:italic;color:var(--moss)}
+  .lede{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:56ch;margin-bottom:36px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;text-decoration:none;padding:12px 22px;border-radius:2px;transition:all .2s}
+  .btn-primary{background:var(--moss-deep);color:var(--paper)}
+  .btn-primary:hover{background:var(--ink)}
+  .btn-ghost{color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink)}
+
+  /* signature: resolution strip, fragments settling into a line */
+  .resolve{margin-top:64px;height:3px;width:100%;display:flex;gap:3px}
+  .resolve span{height:100%;background:var(--moss);flex:1;opacity:.18;animation:settle 1.4s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes settle{to{opacity:.85}}
+  @media(prefers-reduced-motion:reduce){.resolve span{animation:none;opacity:.7}}
+
+  /* sections */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:48px}
+  .sec-num{font-family:var(--mono);font-size:13px;color:var(--clay)}
+  .sec-title{font-family:var(--display);font-weight:500;font-size:clamp(24px,3.5vw,34px);letter-spacing:-.01em}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:36px}}
+  .about-grid p{font-size:17px;margin-bottom:18px;color:#3a443d}
+  .about-grid p:last-child{margin-bottom:0}
+  .facts{font-family:var(--mono);font-size:13px;line-height:2.1;color:var(--muted)}
+  .facts .row{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:6px 0}
+  .facts .row b{color:var(--ink);font-weight:500}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  @media(max-width:760px){.metrics{grid-template-columns:repeat(2,1fr);gap:18px}}
+  .metric{padding:28px 22px;background:var(--paper-2);border-radius:3px}
+  .metric .n{font-family:var(--display);font-size:clamp(34px,5vw,46px);font-weight:500;color:var(--moss-deep);line-height:1;letter-spacing:-.02em}
+  .metric .l{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.4}
+
+  /* projects */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+  .proj{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:4px;
+    padding:30px 28px;display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease;
+  }
+  .proj:hover{transform:translateY(-3px);border-color:var(--moss)}
+  .proj.feature{grid-column:1 / -1;background:var(--moss-deep);border-color:var(--moss-deep)}
+  .proj.feature *{color:var(--paper)}
+  .proj.feature .proj-tag{color:#bfe0cc}
+  .proj.feature .chip{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#e8efe9}
+  .proj-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);margin-bottom:14px}
+  .proj h3{font-family:var(--display);font-weight:500;font-size:22px;line-height:1.15;margin-bottom:12px;letter-spacing:-.01em}
+  .proj p{font-size:14.5px;color:#3a443d;margin-bottom:18px;flex:1}
+  .proj.feature p{color:#dde7e0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12px;padding:5px 11px;background:var(--paper);border:1px solid var(--line);border-radius:2px;color:#3a443d}
+  .feature-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  @media(max-width:680px){.feature-cols{grid-template-columns:1fr;gap:24px}}
+
+  /* work */
+  .job{display:grid;grid-template-columns:210px 1fr;gap:40px;padding:34px 0;border-bottom:1px solid var(--line)}
+  .job:last-child{border-bottom:none;padding-bottom:0}
+  @media(max-width:760px){.job{grid-template-columns:1fr;gap:14px}}
+  .job-meta .co{font-family:var(--display);font-size:19px;font-weight:500}
+  .job-meta .role{font-size:14px;color:var(--moss);margin-top:2px;font-weight:500}
+  .job-meta .when{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px}
+  .job-body ul{list-style:none}
+  .job-body li{position:relative;padding-left:22px;margin-bottom:12px;font-size:15px;color:#3a443d}
+  .job-body li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--clay);border-radius:50%}
+  .job-body li:last-child{margin-bottom:0}
+
+  /* skills */
+  .skill-group{margin-bottom:26px}
+  .skill-group:last-child{margin-bottom:0}
+  .skill-group h4{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);margin-bottom:14px}
+
+  /* contact */
+  .contact{text-align:center;padding:88px 0 40px}
+  .contact .eyebrow{margin-bottom:18px}
+  .contact h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,5vw,52px);letter-spacing:-.02em;margin-bottom:28px}
+  .contact h2 em{font-style:italic;color:var(--moss)}
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  footer{border-top:1px solid var(--line);padding:28px 0;text-align:center}
+  footer p{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">tamanna<b>.</b>sharma</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#work">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">AI Product Manager · San Francisco</p>
+    <h1>I turn messy operational reality into systems people can <em>actually use</em>.</h1>
+    <p class="lede">An AI product manager who builds, not just manages. From agentic RAG systems and fine-tuned models to multi-cloud platforms, I work at the seam where AI meets complex, real-world workflows, and I care less about the model than the minutes it hands back to the people doing the work.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">See the work →</a>
+      <a class="btn btn-ghost" href="mailto:tamannasharma9463@gmail.com">Get in touch</a>
+    </div>
+    <div class="resolve" id="resolve" aria-hidden="true"></div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">About</h2></div>
+    <div class="about-grid reveal">
+      <div>
+        <p>I'm an AI product manager who does my best work in the messy middle: sitting with the people who actually run a workflow, finding where it breaks, and turning that into something simple and durable.</p>
+        <p>My career lives at the intersection of frontier AI and complex systems: enterprise data buried where only experts could reach it, cost governance sprawling across three clouds, learning platforms serving tens of thousands. The throughline is taking something opaque and making it legible, then trustworthy, then self-serve.</p>
+        <p>I'm hands-on enough to build the thing (fine-tuning models, wiring up RAG pipelines, running causal analysis) and product-minded enough to know that the truth usually lives in the field, not the dashboard.</p>
+      </div>
+      <div class="facts">
+        <div class="row"><span>Based in</span><b>San Francisco, CA</b></div>
+        <div class="row"><span>Focus</span><b>AI / Platform PM</b></div>
+        <div class="row"><span>Experience</span><b>6 years</b></div>
+        <div class="row"><span>Education</span><b>MS, UC Davis</b></div>
+        <div class="row"><span>Builds</span><b>RAG · agents · eval</b></div>
+        <div class="row"><span>Currently</span><b>Open to roles</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Impact in numbers</h2></div>
+    <div class="metrics reveal">
+      <div class="metric"><div class="n">60%</div><div class="l">Reduction in manual analyst overhead via agentic RAG</div></div>
+      <div class="metric"><div class="n">50k+</div><div class="l">Active users served on an education intelligence layer</div></div>
+      <div class="metric"><div class="n">30%</div><div class="l">Lift in feature adoption through hypothesis-driven testing</div></div>
+      <div class="metric"><div class="n">50+</div><div class="l">Enterprise accounts on a unified multi-cloud platform</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Selected projects</h2></div>
+    <div class="proj-grid reveal">
+
+      <div class="proj feature">
+        <div class="feature-cols">
+          <div>
+            <div class="proj-tag">Agentic AI · Healthcare</div>
+            <h3>Dr.GPT: Agentic Clinical Decision Support</h3>
+            <p>An AI assistant that helps clinicians surface relevant patient history fast. It pairs retrieval-augmented generation over a FAISS index of patient records with an agentic framework that orchestrates retrieval, diagnostic reasoning, doctor matching, and scheduling as discrete tools.</p>
+          </div>
+          <div>
+            <p>I fine-tuned Mistral-7B with a LoRA/PEFT adapter on the MedReason dataset and benchmarked it against a stock-RAG baseline, showing stronger handling of rare presentations at the cost of latency, a tradeoff I argued is worth it in high-stakes clinical settings. Packaged for deployment with Docker and FastAPI.</p>
+            <div class="chips">
+              <span class="chip">Mistral-7B</span><span class="chip">LoRA/PEFT</span><span class="chip">FAISS</span>
+              <span class="chip">LangChain</span><span class="chip">FastAPI</span><span class="chip">Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-tag">ML System · Hackathon</div>
+        <h3>CityMind: Crisis Intelligence System</h3>
+        <p>Predicts the cascading effects of disasters (blackouts, economic dips, transport disruptions, public panic) from multi-source real-time data. Anchored nine datasets by event type and location, deployed anomaly-detection modules (Isolation Forest, BERT sentiment), and trained a multi-label classifier to forecast secondary impacts, surfaced through an interactive geospatial dashboard.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">Transformers</span><span class="chip">Plotly</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-tag">Causal Inference · Policy</div>
+        <h3>Minimum Wage &amp; Food Insecurity</h3>
+        <p>A causal study estimating the effect of minimum-wage changes on daily caloric intake and household nutrition across four U.S. states, using Difference-in-Differences and staggered fixed-effects models with continuous treatment-intensity variation.</p>
+        <div class="chips"><span class="chip">Causal Inference</span><span class="chip">Diff-in-Diff</span><span class="chip">R</span><span class="chip">Policy Analysis</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-tag">Quant · Finance</div>
+        <h3>AI Coffee-Can Investment Strategy</h3>
+        <p>An AI-driven long-term investment model built on the Coffee Can philosophy. Classified fundamentally strong stocks using ROCE, gross margins, revenue growth and debt-to-equity, applied Mean-Variance Optimization to balance risk and return, and simulated a decade-long holding period to test the approach.</p>
+        <div class="chips"><span class="chip">Portfolio Optimization</span><span class="chip">Feature Engineering</span><span class="chip">Python</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-tag">Experimentation</div>
+        <h3>Expedia: Price Sensitivity</h3>
+        <p>Analyzed randomized price-experiment data to quantify consumer price sensitivity in online hotel bookings, exploring how sensitivity shifts by destination and customer income to sharpen booking-behavior insight.</p>
+        <div class="chips"><span class="chip">A/B Experiments</span><span class="chip">Regression</span><span class="chip">R</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-tag">Causal Inference</div>
+        <h3>United Breaks Guitars: IV Regression</h3>
+        <p>Used Instrumental Variables regression to estimate the causal impact of media type and content on social-media engagement, addressing endogeneity by instrumenting on historical posting behavior.</p>
+        <div class="chips"><span class="chip">Instrumental Variables</span><span class="chip">Endogeneity</span><span class="chip">R</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Experience</h2></div>
+
+    <div class="job reveal">
+      <div class="job-meta"><div class="co">Spanda.ai</div><div class="role">Product, AI Platforms</div><div class="when">Oct 2025 to Present</div></div>
+      <div class="job-body"><ul>
+        <li>Leading 0→1 product strategy across three B2B SaaS platforms, defining requirements for generative AI and agentic workflows and shipping two MVPs and a proof of concept.</li>
+        <li>Owning the roadmap and technical vision for the core intelligence layer of an education platform: a multi-modal VideoRAG pipeline and knowledge-tracing architecture serving 50,000+ active users.</li>
+        <li>Drove integration of a sequential learning model for personalized pathways and predictive drop-off detection to lift engagement.</li>
+      </ul></div>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-meta"><div class="co">Owens Corning</div><div class="role">AI Product Manager</div><div class="when">Aug 2024 to Jul 2025</div></div>
+      <div class="job-body"><ul>
+        <li>Led discovery and roadmap to map operational bottlenecks into an agentic RAG system, turning unstructured enterprise data into queryable intelligence and cutting manual analyst ticket volume by 60%.</li>
+        <li>Owned the lifecycle from PRD to human-in-the-loop feedback; built a custom embedding-based evaluation framework that improved query accuracy by 30%.</li>
+        <li>Vetted model feasibility and architecture directly with engineering leads so AI performance metrics mapped to core business KPIs.</li>
+      </ul></div>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-meta"><div class="co">Broadcom · VMware (CloudHealth)</div><div class="role">Product Manager</div><div class="when">Oct 2021 to Jul 2024</div></div>
+      <div class="job-body"><ul>
+        <li>Evolved the Rightsizing engine from a single-cloud solution into a unified multi-cloud platform (AWS, GCP, Azure), scaling cost governance across 50+ enterprise accounts.</li>
+        <li>Translated multi-cloud usage friction into a prioritized backlog, delivering $24k+ in annualized savings per account.</li>
+        <li>Drove a 30% lift in feature adoption via A/B testing and Pendo-based causal analysis; accelerated enterprise onboarding by 35%.</li>
+      </ul></div>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-meta"><div class="co">Paytm Money</div><div class="role">Analyst</div><div class="when">Jan 2021 to Sep 2021</div></div>
+      <div class="job-body"><ul>
+        <li>Built scalable API testing pipelines in Java and RestAssured, integrated with CI/CD to cut manual testing time by 40%.</li>
+        <li>Ran root-cause analysis on 50+ API performance issues, improving response times by 35% and transaction reliability by 25%.</li>
+      </ul></div>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-meta"><div class="co">Evive Software Analytics</div><div class="role">Analyst</div><div class="when">Mar 2019 to Nov 2020</div></div>
+      <div class="job-body"><ul>
+        <li>Built backend validation frameworks for high-volume ETL pipelines, led PostgreSQL schema migrations, and shipped real-time anomaly dashboards (Kibana, Elasticsearch), cutting manual QA effort by 30%.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Toolkit</h2></div>
+    <div class="reveal">
+      <div class="skill-group">
+        <h4>AI &amp; ML</h4>
+        <div class="chips">
+          <span class="chip">LLMs</span><span class="chip">RAG</span><span class="chip">Agentic Workflows</span><span class="chip">Fine-tuning (LoRA/PEFT)</span>
+          <span class="chip">FAISS / Vector Search</span><span class="chip">AI Evaluation</span><span class="chip">Prompt Engineering</span><span class="chip">Human-in-the-loop</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Product Management</h4>
+        <div class="chips">
+          <span class="chip">0→1 Discovery</span><span class="chip">PRDs</span><span class="chip">Roadmapping</span><span class="chip">A/B Testing</span>
+          <span class="chip">Causal Inference</span><span class="chip">OKRs</span><span class="chip">GTM Strategy</span><span class="chip">Agile / Scrum</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Data &amp; Technical</h4>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">REST APIs</span>
+          <span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Tableau</span><span class="chip">Power BI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Let's talk</p>
+    <h2>Building something at the edge of <em>AI and the real world?</em></h2>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="mailto:tamannasharma9463@gmail.com">tamannasharma9463@gmail.com</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/tamannasha" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/tamanna29" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><p>© 2026 Tamanna Sharma · San Francisco, CA</p></div></footer>
+
+<script>
+  (function(){
+    var strip=document.getElementById('resolve');
+    if(!strip)return;
+    for(var i=0;i<48;i++){var s=document.createElement('span');s.style.animationDelay=(i*18)+'ms';strip.appendChild(s);}
+  })();
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
