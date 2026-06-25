@@ -15,6 +15,8 @@
     --moss:#3f6b54;
     --moss-deep:#2c4d3c;
     --clay:#c4673b;
+    --rose:#c98a86;
+    --rose-soft:#e8d3d0;
     --line:#d8d3c6;
     --muted:#6a7269;
     --display:"Fraunces",Georgia,serif;
@@ -23,7 +25,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{background:var(--paper);background-image:radial-gradient(120% 80% at 100% 0%,rgba(201,138,134,.06),transparent 60%),radial-gradient(100% 60% at 0% 100%,rgba(63,107,84,.05),transparent 55%);background-attachment:fixed;color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
 
   /* nav */
@@ -97,6 +99,36 @@
   .feature-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}
   @media(max-width:680px){.feature-cols{grid-template-columns:1fr;gap:24px}}
 
+  /* case study (featured) */
+  .casestudy{
+    background:var(--moss-deep);border:1px solid var(--moss-deep);border-radius:4px;
+    padding:38px 38px 34px;margin-bottom:24px;color:var(--paper);
+  }
+  @media(max-width:680px){.casestudy{padding:28px 24px 26px}}
+  .casestudy .proj-tag{color:#bfe0cc;margin-bottom:14px}
+  .casestudy h3{font-family:var(--display);font-weight:500;font-size:clamp(23px,3.2vw,30px);line-height:1.12;letter-spacing:-.01em;color:var(--paper)}
+  .casestudy .cs-sub{font-style:italic;font-family:var(--display);font-size:17px;color:#bfe0cc;margin-top:6px}
+  .cs-stats{display:flex;flex-wrap:wrap;gap:28px;margin:24px 0 4px;padding:20px 0;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14)}
+  .cs-stats .s .n{font-family:var(--display);font-size:30px;font-weight:500;color:var(--paper);line-height:1;letter-spacing:-.02em}
+  .cs-stats .s .l{font-size:12px;color:#cfe0d5;margin-top:7px}
+  .cs-body{margin-top:26px;display:none}
+  .cs-body.open{display:block}
+  .cs-beat{margin-bottom:24px}
+  .cs-beat:last-child{margin-bottom:0}
+  .cs-beat h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#bfe0cc;margin-bottom:10px}
+  .cs-body p{font-size:15px;line-height:1.7;color:#e2ebe4;margin-bottom:13px}
+  .cs-body p:last-child{margin-bottom:0}
+  .cs-thread{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font-family:var(--display);font-style:italic;font-size:17px;line-height:1.5;color:#d7e6dc}
+  .cs-toggle{
+    margin-top:24px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:#e8efe9;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:2px;
+    padding:10px 18px;transition:background .2s
+  }
+  .cs-toggle:hover{background:rgba(255,255,255,.16)}
+  .cs-toggle .arw{transition:transform .25s}
+  .cs-toggle[aria-expanded="true"] .arw{transform:rotate(90deg)}
+
   /* work */
   .job{display:grid;grid-template-columns:210px 1fr;gap:40px;padding:34px 0;border-bottom:1px solid var(--line)}
   .job:last-child{border-bottom:none;padding-bottom:0}
@@ -108,6 +140,30 @@
   .job-body li{position:relative;padding-left:22px;margin-bottom:12px;font-size:15px;color:#3a443d}
   .job-body li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;background:var(--clay);border-radius:50%}
   .job-body li:last-child{margin-bottom:0}
+
+  /* timeline (visual experience) */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--moss),var(--line))}
+  .tl-item{position:relative;padding:0 0 38px 30px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-30px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--paper);border:2px solid var(--moss);z-index:1}
+  .tl-item.cur::before{background:var(--moss);box-shadow:0 0 0 4px rgba(201,138,134,.22)}
+  @media(max-width:760px){.timeline{padding-left:26px}.tl-item{padding-left:22px}.tl-item::before{left:-26px;width:15px;height:15px}}
+  .tl-card{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:24px 26px;transition:transform .25s ease,border-color .25s ease}
+  .tl-card:hover{transform:translateX(3px);border-color:var(--moss)}
+  .tl-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .tl-co{font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.01em}
+  .tl-when{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+  .tl-role-row{display:flex;align-items:center;gap:10px;margin-top:3px;flex-wrap:wrap}
+  .tl-role{font-size:13.5px;color:var(--moss);font-weight:500}
+  .tl-domain{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay);background:rgba(196,103,59,.09);border:1px solid rgba(196,103,59,.2);border-radius:2px;padding:2px 8px}
+  .tl-gist{font-family:var(--display);font-style:italic;font-size:16px;line-height:1.4;color:var(--moss-deep);margin:16px 0 14px}
+  .tl-card ul{list-style:none}
+  .tl-card li{position:relative;padding-left:20px;margin-bottom:9px;font-size:14px;color:#3a443d;line-height:1.55}
+  .tl-card li:last-child{margin-bottom:0}
+  .tl-card li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--clay);border-radius:50%}
+  .tl-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .tl-chips .chip{font-size:11.5px;padding:4px 10px}
 
   /* skills */
   .skill-group{margin-bottom:26px}
@@ -211,6 +267,52 @@
 <section id="projects">
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Things I&#39;ve built</h2></div>
+
+    <div class="casestudy reveal">
+      <div class="proj-tag">Case study · Broadcom (VMware CloudHealth)</div>
+      <h3>Nobody acts on a number they don&#39;t believe</h3>
+      <div class="cs-sub">How I grew adoption of a cost-savings engine by fixing trust, not features.</div>
+
+      <div class="cs-stats">
+        <div class="s"><div class="n">+30%</div><div class="l">Feature adoption</div></div>
+        <div class="s"><div class="n">50+</div><div class="l">Enterprise accounts</div></div>
+        <div class="s"><div class="n">$24k+</div><div class="l">Annualized savings / account</div></div>
+      </div>
+
+      <button class="cs-toggle" aria-expanded="false" aria-controls="cs-broadcom">
+        <span class="arw">&#9656;</span><span class="lbl">Read the case study</span>
+      </button>
+
+      <div class="cs-body" id="cs-broadcom">
+        <div class="cs-beat">
+          <h4>The dilemma</h4>
+          <p>I owned the Rightsizing engine, the part of CloudHealth that tells companies where they&#39;re overpaying for cloud they aren&#39;t using. It&#39;s a satisfying product to own on paper: the math is real, the savings are real, and the pitch is almost insultingly simple, here&#39;s money you&#39;re wasting, here&#39;s how to stop. So what bothered me was that the savings were sitting right there, fully calculated, and a lot of customers just weren&#39;t taking them.</p>
+          <p>The stakeholder explanation was tidy and confident: we were missing features. There was a list, more granular controls, more configurability, more depth, and the theory was that the next feature down the list would finally unlock adoption. It&#39;s a reasonable story. It&#39;s also the story you tell when you haven&#39;t looked closely, because &ldquo;build more&rdquo; is an easier answer than &ldquo;something&#39;s wrong with what we already shipped.&rdquo; The dilemma was whether to trust the list, or trust what the usage data was quietly telling me.</p>
+        </div>
+        <div class="cs-beat">
+          <h4>The KPI</h4>
+          <p>The number I owned was feature adoption, were people actually using and acting on the recommendations? But adoption was a proxy. The outcome that actually mattered was realized savings per account. That distinction was the whole game: we could generate flawless recommendations forever, but if nobody acted, both numbers stayed flat. The product wasn&#39;t measured by whether it was right. It was measured by whether anyone did anything about it.</p>
+        </div>
+        <div class="cs-beat">
+          <h4>The thought process &mdash; and how I found it</h4>
+          <p>Rather than open the feature backlog, I started with discovery. I pulled the product analytics to see where people actually dropped off, they&#39;d view a recommendation and not act, so the funnel died at the moment of trust, not the moment of discovery. Then I went qualitative: I sat in on customer calls and partnered closely with our TAMs and support teams, who were sitting on the real signal, to hear how customers talked about the recommendations. I also worked on the testing and monitoring services behind the engine, so I could see how the recommendations behaved in production, not just how they looked. The language from customers wasn&#39;t &ldquo;I need more options.&rdquo; It was hesitation, &ldquo;how did it get this number,&rdquo; &ldquo;is this safe to actually run.&rdquo;</p>
+          <p>So I put myself in their seat. Would you reconfigure live production infrastructure because a dashboard told you to, with no idea how it decided, when you&#39;re the one who gets paged if it breaks? Of course not. The non-action wasn&#39;t a missing feature. It was a rational response to being asked for blind faith. We&#39;d optimized hard for being right and forgotten to be believable, and those are different products. A correct recommendation nobody trusts delivers exactly zero dollars. So the work wasn&#39;t &ldquo;add controls.&rdquo; It was &ldquo;make the reasoning visible.&rdquo;</p>
+        </div>
+        <div class="cs-beat">
+          <h4>The PM craft &mdash; aligning and shipping</h4>
+          <p>Having a contrarian insight is the easy part; getting an org to act on it is the job. I had to reprioritize against features stakeholders were actively asking for, so I led with evidence, not opinion. I brought the funnel data and the customer-call themes into a clear narrative, the savings exist, customers don&#39;t trust them, here&#39;s the proof, and used it to reframe the roadmap conversation from &ldquo;which feature next&rdquo; to &ldquo;what&#39;s actually blocking adoption.&rdquo; That turned a potential turf fight into alignment, because I wasn&#39;t asking them to take my word for it, I was showing them the drop-off.</p>
+          <p>From there I wrote the PRD around legibility, surfacing how each recommendation was generated, what it was based on, and why it was safe, and worked closely with engineering to scope it against real architectural constraints rather than an idealized version. I sequenced it deliberately: ship the explanation layer, instrument it, and prove the hypothesis before expanding scope, so we were never betting the roadmap on an untested belief. I ran it through standard sprint planning and kept customer success looped in so the people fielding the questions knew what was coming and could feed reactions back.</p>
+          <p>The harder part was the communication. Telling stakeholders their requested features were moving down the list could have cost trust, so I didn&#39;t deliver it as a no, I framed it as a sequencing decision tied to the goal they already cared about, and made the reasoning visible the same way the product made its recommendations visible. I tailored the message to the audience: a crisp data narrative for leadership, architectural tradeoffs for engineering, and plain talking points for the TAMs and support teams so they could explain the change to customers consistently. Throughout, I kept a tight feedback loop, regular check-ins, shared progress, and an open channel back from the customer-facing teams, so nobody was surprised and disagreements surfaced early while they were still cheap to resolve.</p>
+        </div>
+        <div class="cs-beat">
+          <h4>What changed, and the tradeoff</h4>
+          <p>The uncomfortable call was deprioritizing features people explicitly wanted to fix a problem nobody had named. Telling a stakeholder &ldquo;I&#39;m not building your top items yet, I&#39;m building trust instead&rdquo; is not a fun conversation. But you can&#39;t feature your way out of a trust problem, and I was confident enough in the data to spend the political capital.</p>
+          <p>What made it defensible was that I validated it instead of asserting it, hypothesis-driven A/B testing and causal analysis in Pendo, so the outcome rested on evidence, not my conviction. Adoption rose 30%, we scaled cost governance across 50+ enterprise accounts, and it drove $24k+ in annualized savings per account, savings that had been available the entire time and were simply never believed.</p>
+        </div>
+        <div class="cs-thread">The thread through everything I build: getting the answer right is the easy half. Getting a human to trust it enough to act is the actual job.</div>
+      </div>
+    </div>
+
     <div class="proj-grid reveal">
 
       <div class="proj feature">
@@ -273,46 +375,102 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Where I&#39;ve been</h2></div>
 
-    <div class="job reveal">
-      <div class="job-meta"><div class="co">Spanda.ai</div><div class="role">Product, AI Platforms</div><div class="when">Oct 2025 to Present</div></div>
-      <div class="job-body"><ul>
-        <li>Leading 0→1 product strategy across three B2B SaaS platforms, defining requirements for generative AI and agentic workflows and shipping two MVPs and a proof of concept.</li>
-        <li>Owning the roadmap and technical vision for the core intelligence layer of an education platform: a multi-modal VideoRAG pipeline and knowledge-tracing architecture serving 50,000+ active users.</li>
-        <li>Drove integration of a sequential learning model for personalized pathways and predictive drop-off detection to lift engagement.</li>
-      </ul></div>
-    </div>
+    <div class="timeline reveal">
 
-    <div class="job reveal">
-      <div class="job-meta"><div class="co">Owens Corning</div><div class="role">AI Product Manager</div><div class="when">Aug 2024 to Jul 2025</div></div>
-      <div class="job-body"><ul>
-        <li>Led discovery and roadmap to map operational bottlenecks into an agentic RAG system, turning unstructured enterprise data into queryable intelligence and cutting manual analyst ticket volume by 60%.</li>
-        <li>Owned the lifecycle from PRD to human-in-the-loop feedback; built a custom embedding-based evaluation framework that improved query accuracy by 30%.</li>
-        <li>Vetted model feasibility and architecture directly with engineering leads so AI performance metrics mapped to core business KPIs.</li>
-      </ul></div>
-    </div>
+      <div class="tl-item cur">
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">Spanda.ai</div>
+              <div class="tl-role-row"><span class="tl-role">Product, AI Platforms</span><span class="tl-domain">AI · 0&rarr;1</span></div>
+            </div>
+            <div class="tl-when">Oct 2025 &mdash; Now</div>
+          </div>
+          <div class="tl-gist">Walked into a blank page and a vision. Shipped the intelligence layer 50k students learn on.</div>
+          <ul>
+            <li>0&rarr;1 AI strategy, three platforms</li>
+            <li>VideoRAG intelligence layer, 50k users</li>
+            <li>Personalized pathways, predictive drop-off detection</li>
+          </ul>
+          <div class="tl-chips"><span class="chip">Agentic AI</span><span class="chip">VideoRAG</span><span class="chip">Knowledge Tracing</span><span class="chip">0&rarr;1</span></div>
+        </div>
+      </div>
 
-    <div class="job reveal">
-      <div class="job-meta"><div class="co">Broadcom · VMware (CloudHealth)</div><div class="role">Product Manager</div><div class="when">Oct 2021 to Jul 2024</div></div>
-      <div class="job-body"><ul>
-        <li>Evolved the Rightsizing engine from a single-cloud solution into a unified multi-cloud platform (AWS, GCP, Azure), scaling cost governance across 50+ enterprise accounts.</li>
-        <li>Translated multi-cloud usage friction into a prioritized backlog, delivering $24k+ in annualized savings per account.</li>
-        <li>Drove a 30% lift in feature adoption via A/B testing and Pendo-based causal analysis; accelerated enterprise onboarding by 35%.</li>
-      </ul></div>
-    </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">Owens Corning</div>
+              <div class="tl-role-row"><span class="tl-role">AI Product Manager</span><span class="tl-domain">Enterprise AI</span></div>
+            </div>
+            <div class="tl-when">Aug 2024 &mdash; Jul 2025</div>
+          </div>
+          <div class="tl-gist">Built the agent. Then built the thing that proved it could be trusted.</div>
+          <ul>
+            <li>Agentic RAG, 60% fewer tickets</li>
+            <li>Custom eval framework, +30% accuracy</li>
+            <li>Model feasibility with engineering leads</li>
+          </ul>
+          <div class="tl-chips"><span class="chip">Agentic RAG</span><span class="chip">AI Evaluation</span><span class="chip">Human-in-the-loop</span><span class="chip">PRDs</span></div>
+        </div>
+      </div>
 
-    <div class="job reveal">
-      <div class="job-meta"><div class="co">Paytm Money</div><div class="role">Analyst</div><div class="when">Jan 2021 to Sep 2021</div></div>
-      <div class="job-body"><ul>
-        <li>Built scalable API testing pipelines in Java and RestAssured, integrated with CI/CD to cut manual testing time by 40%.</li>
-        <li>Ran root-cause analysis on 50+ API performance issues, improving response times by 35% and transaction reliability by 25%.</li>
-      </ul></div>
-    </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">Broadcom &middot; VMware (CloudHealth)</div>
+              <div class="tl-role-row"><span class="tl-role">Product Manager</span><span class="tl-domain">Cloud · FinOps</span></div>
+            </div>
+            <div class="tl-when">Oct 2021 &mdash; Jul 2024</div>
+          </div>
+          <div class="tl-gist">Found the savings nobody was taking, and figured out why.</div>
+          <ul>
+            <li>Single-cloud to multi-cloud platform</li>
+            <li>+30% adoption, $24k saved / account</li>
+            <li>Customer discovery with TAMs, support</li>
+            <li>Testing &amp; monitoring for reliability</li>
+          </ul>
+          <div class="tl-chips"><span class="chip">Multi-cloud</span><span class="chip">A/B Testing</span><span class="chip">Roadmapping</span><span class="chip">Stakeholder Mgmt</span></div>
+        </div>
+      </div>
 
-    <div class="job reveal">
-      <div class="job-meta"><div class="co">Evive Software Analytics</div><div class="role">Analyst</div><div class="when">Mar 2019 to Nov 2020</div></div>
-      <div class="job-body"><ul>
-        <li>Built backend validation frameworks for high-volume ETL pipelines, led PostgreSQL schema migrations, and shipped real-time anomaly dashboards (Kibana, Elasticsearch), cutting manual QA effort by 30%.</li>
-      </ul></div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">Paytm Money</div>
+              <div class="tl-role-row"><span class="tl-role">Analyst</span><span class="tl-domain">Fintech</span></div>
+            </div>
+            <div class="tl-when">Jan 2021 &mdash; Sep 2021</div>
+          </div>
+          <div class="tl-gist">Made a payments platform faster, and harder to break.</div>
+          <ul>
+            <li>API testing pipelines into CI/CD</li>
+            <li>50+ issues fixed, faster + reliable</li>
+          </ul>
+          <div class="tl-chips"><span class="chip">Payments</span><span class="chip">CI/CD</span><span class="chip">Root-cause Analysis</span></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">Evive Software Analytics</div>
+              <div class="tl-role-row"><span class="tl-role">Analyst</span><span class="tl-domain">Healthtech · Data</span></div>
+            </div>
+            <div class="tl-when">Mar 2019 &mdash; Nov 2020</div>
+          </div>
+          <div class="tl-gist">Where I learned data is only useful if you can trust it.</div>
+          <ul>
+            <li>ETL validation, PostgreSQL migrations</li>
+            <li>Real-time anomaly dashboards, &minus;30% QA</li>
+          </ul>
+          <div class="tl-chips"><span class="chip">Data Pipelines</span><span class="chip">PostgreSQL</span><span class="chip">Anomaly Detection</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -400,6 +558,19 @@
         rotor.style.opacity=1;
       },350);
     },2600);
+  })();
+
+  // case study expand/collapse
+  (function(){
+    var btn=document.querySelector('.cs-toggle');
+    if(!btn)return;
+    var body=document.getElementById(btn.getAttribute('aria-controls'));
+    var lbl=btn.querySelector('.lbl');
+    btn.addEventListener('click',function(){
+      var open=body.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      lbl.textContent=open?'Hide the case study':'Read the case study';
+    });
   })();
 
   var io=new IntersectionObserver(function(entries){
